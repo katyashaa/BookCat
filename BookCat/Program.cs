@@ -7,7 +7,7 @@ class Program
     static void Main(string[] args) 
     {
         // Подключение к базе данных
-        string connectionString = "Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=1315";
+        string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=1315";
         var library = new BookLibrary(connectionString);
 
         while (true)
