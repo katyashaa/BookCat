@@ -1,24 +1,61 @@
-﻿using System.Collections;
-using BookCat.Menu;
+﻿using System;
+using System.Collections.Generic;
 using BookCat.Storage;
 
-namespace BookCat
+class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        // Подключение к базе данных
+        string connectionString = "Host=localhost;Port=5432;Database=book_catalog;Username=your_user;Password=your_password";
+        var library = new BookLibrary(connectionString);
+
+        while (true)
         {
-            BookLibrary lib = new BookLibrary();
-            ArrayList options = new ArrayList(new ISection[] 
-                {
-                    new AddBook(lib), 
-                    new FindName(lib), 
-                    new FindAuthor(lib), 
-                    new FindISBN(lib), 
-                    new FindKeyword(lib)}
-            );
-            new Start(lib, options).Exec();
-            
+            Console.WriteLine("\nВведите информацию о книге:");
+
+            Console.Write("Название: ");
+            string title = Console.ReadLine()?.Trim();
+
+            Console.Write("Год издания: ");
+            if (!int.TryParse(Console.ReadLine(), out int year))
+            {
+                Console.WriteLine("Некорректный год. Попробуйте снова.");
+                continue;
+            }
+
+            Console.Write("Автор: ");
+            string author = Console.ReadLine()?.Trim();
+
+            Console.Write("ISBN: ");
+            string isbn = Console.ReadLine()?.Trim();
+
+            Console.Write("Аннотация: ");
+            string annotation = Console.ReadLine()?.Trim();
+
+            Console.Write("Жанры (через запятую): ");
+            string genresInput = Console.ReadLine()?.Trim();
+            var genres = new HashSet<string>(genresInput.Split(',', StringSplitOptions.RemoveEmptyEntries));
+
+            // Создаем объект книги
+            var book = new Book(title, year, author, isbn, annotation, genres);
+
+            // Добавляем книгу в библиотеку (и автоматически в базу данных)
+            if (library.AddBook(book))
+            {
+                Console.WriteLine("Книга успешно добавлена в базу данных.");
+            }
+            else
+            {
+                Console.WriteLine("Книга с таким ISBN или названием уже существует.");
+            }
+
+            Console.WriteLine("\nХотите добавить еще одну книгу? (да/нет)");
+            string response = Console.ReadLine()?.Trim().ToLower();
+            if (response != "да" && response != "yes")
+            {
+                break;
+            }
         }
     }
 }

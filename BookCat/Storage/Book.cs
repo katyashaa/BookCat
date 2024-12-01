@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using BookCat.Util;
 
@@ -19,6 +20,7 @@ namespace BookCat.Storage
         private HashSet<string> _nameTokens = new HashSet<string>();
         private HashSet<string> _authorNameTokens = new HashSet<string>();
 
+        // Конструктор с HashSet<string> для жанров
         public Book(string title, int year, string author, string isbn, string annotation, HashSet<string> genres)
         {
             _title = title.Trim();
@@ -26,12 +28,13 @@ namespace BookCat.Storage
             _author = author.Trim();
             _isbn = isbn.Trim();
             _annotation = annotation.Trim();
-            _genres = genres;
+            _genres = genres ?? new HashSet<string>();  // Если genres равен null, создаем новый HashSet
             Tokenizator.Tokenize(_annotationTokens, _annotation);
             Tokenizator.Tokenize(_nameTokens, _title);
             Tokenizator.Tokenize(_authorNameTokens, _author);
         }
 
+        // Конструктор, принимающий строку жанров
         public Book(string title, int year, string author, string isbn, string annotation, string genres)
         {
             _title = title.Trim();
@@ -39,12 +42,16 @@ namespace BookCat.Storage
             _author = author.Trim();
             _isbn = isbn.Trim();
             _annotation = annotation.Trim();
+
+            // Преобразуем строку жанров в HashSet
+            _genres = new HashSet<string>(genres.Split(',').Select(g => g.Trim().ToLowerInvariant()));
+            
             Tokenizator.Tokenize(_annotationTokens, _annotation);
             Tokenizator.Tokenize(_nameTokens, _title);
-            Tokenizator.Tokenize(_genres, genres);
             Tokenizator.Tokenize(_authorNameTokens, _author);
         }
 
+        // Методы для получения свойств
         public string GetIsbn()
         {
             return _isbn;
@@ -75,6 +82,13 @@ namespace BookCat.Storage
             return _year;
         }
 
+        // Получение жанров как HashSet
+        public HashSet<string> GetGenres()
+        {
+            return _genres;
+        }
+
+        // Поиск по автору
         public bool FindAuthor(string author)
         {
             HashSet<string> name = new HashSet<string>();
@@ -91,11 +105,13 @@ namespace BookCat.Storage
             return true;
         }
 
+        // Поиск по названию
         public bool FindTitle(string keyword)
         {
             return _nameTokens.Contains(keyword.ToLowerInvariant());
         }
 
+        // Поиск по нескольким ключевым словам в названии
         public int FindTitle(HashSet<string> tokenList)
         {
             int counter = 0;
@@ -110,16 +126,19 @@ namespace BookCat.Storage
             return counter;
         }
 
+        // Поиск по жанру
         public bool FindGenres(string keyword)
         {
             return _genres.Contains(keyword.ToLowerInvariant());
         }
 
+        // Поиск по аннотации
         public bool FindKeywordInAnnotation(string keyword)
         {
             return _annotationTokens.Contains(keyword.ToLowerInvariant());
         }
 
+        // Краткая информация о книге
         public string GetBriefInfo()
         {
             StringBuilder sb = new StringBuilder();
