@@ -4,10 +4,10 @@ using BookCat.Storage;
 
 class Program
 {
-    static void Main(string[] args)
+    static void Main(string[] args) 
     {
         // Подключение к базе данных
-        string connectionString = "Host=localhost;Port=5432;Database=book_catalog;Username=your_user;Password=your_password";
+        string connectionString = "Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=1315";
         var library = new BookLibrary(connectionString);
 
         while (true)
@@ -48,13 +48,6 @@ class Program
             else
             {
                 Console.WriteLine("Книга с таким ISBN или названием уже существует.");
-            }
-
-            Console.WriteLine("\nХотите добавить еще одну книгу? (да/нет)");
-            string response = Console.ReadLine()?.Trim().ToLower();
-            if (response != "да" && response != "yes")
-            {
-                break;
             }
         }
     }
