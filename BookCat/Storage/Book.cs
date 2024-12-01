@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using BookCat.Util;
 
 namespace BookCat.Storage
@@ -28,7 +25,7 @@ namespace BookCat.Storage
             _author = author.Trim();
             _isbn = isbn.Trim();
             _annotation = annotation.Trim();
-            _genres = genres ?? new HashSet<string>();  // Если genres равен null, создаем новый HashSet
+            _genres = genres ?? new HashSet<string>();
             Tokenizator.Tokenize(_annotationTokens, _annotation);
             Tokenizator.Tokenize(_nameTokens, _title);
             Tokenizator.Tokenize(_authorNameTokens, _author);
