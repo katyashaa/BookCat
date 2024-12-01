@@ -1,54 +1,31 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using BookCat.Menu;
 using BookCat.Storage;
 
 class Program
 {
-    static void Main(string[] args) 
+    static void Main(string[] args)
     {
         // Подключение к базе данных
         string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=1315";
         var library = new BookLibrary(connectionString);
 
-        while (true)
+        // Список доступных действий
+        var options = new ArrayList
         {
-            Console.WriteLine("\nВведите информацию о книге:");
+            new AddBook(library), // Добавление книги
+            new FindName(library), // Поиск по названию
+            new FindAuthor(library), // Поиск по автору
+            new FindISBN(library), // Поиск по ISBN
+            new FindKeyword(library) // Поиск по ключевым словам
+        };
 
-            Console.Write("Название: ");
-            string title = Console.ReadLine()?.Trim();
+        // Создание стартового меню
+        var startMenu = new Start(library, options);
 
-            Console.Write("Год издания: ");
-            if (!int.TryParse(Console.ReadLine(), out int year))
-            {
-                Console.WriteLine("Некорректный год. Попробуйте снова.");
-                continue;
-            }
-
-            Console.Write("Автор: ");
-            string author = Console.ReadLine()?.Trim();
-
-            Console.Write("ISBN: ");
-            string isbn = Console.ReadLine()?.Trim();
-
-            Console.Write("Аннотация: ");
-            string annotation = Console.ReadLine()?.Trim();
-
-            Console.Write("Жанры (через запятую): ");
-            string genresInput = Console.ReadLine()?.Trim();
-            var genres = new HashSet<string>(genresInput.Split(',', StringSplitOptions.RemoveEmptyEntries));
-
-            // Создаем объект книги
-            var book = new Book(title, year, author, isbn, annotation, genres);
-
-            // Добавляем книгу в библиотеку (и автоматически в базу данных)
-            if (library.AddBook(book))
-            {
-                Console.WriteLine("Книга успешно добавлена в базу данных.");
-            }
-            else
-            {
-                Console.WriteLine("Книга с таким ISBN или названием уже существует.");
-            }
-        }
+        // Запуск меню
+        startMenu.Exec();
     }
 }
