@@ -7,11 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30bfb03c-17a3-4876-9529-820ae5994e5b" name="Changes" comment="проверяется повторение книг">
+    <list default="true" id="30bfb03c-17a3-4876-9529-820ae5994e5b" name="Changes" comment="проверка повтора">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookCat/Menu/AddBook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Menu/AddBook.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookCat/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookCat/Storage/Book.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/Book.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookCat/Storage/BookLibrary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/BookLibrary.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookCat/Storage/Database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/Database.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookCat/Storage/Memory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/Memory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,25 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.BookCat.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.BookCat.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="BookCat" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
@@ -123,7 +125,7 @@
       <workItem from="1733077171391" duration="169000" />
       <workItem from="1733258416805" duration="153000" />
       <workItem from="1733409795863" duration="7887000" />
-      <workItem from="1733418264748" duration="915000" />
+      <workItem from="1733418264748" duration="3910000" />
     </task>
     <task id="LOCAL-00001" summary="почти готово">
       <option name="closed" value="true" />
@@ -173,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733418483903</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="проверка повтора">
+      <option name="closed" value="true" />
+      <created>1733419288669</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733419288669</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +200,7 @@
     <MESSAGE value="версия где пока что всё отправляется в бд" />
     <MESSAGE value="готовая версия" />
     <MESSAGE value="проверяется повторение книг" />
-    <option name="LAST_COMMIT_MESSAGE" value="проверяется повторение книг" />
+    <MESSAGE value="проверка повтора" />
+    <option name="LAST_COMMIT_MESSAGE" value="проверка повтора" />
   </component>
 </project>

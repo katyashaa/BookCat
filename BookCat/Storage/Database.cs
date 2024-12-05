@@ -8,11 +8,9 @@ namespace BookCat.Storage
     public class Database : IMemory
     {
         private readonly string _connectionString;
-
-        // Constructor that accepts IConfiguration as a dependency
+        
         public Database(IConfiguration configuration)
         {
-            // Retrieve the connection string from the "Settings" section of the appsettings.json file
             _connectionString = configuration["Settings:ConnectionString"];
         }
 
@@ -41,21 +39,21 @@ namespace BookCat.Storage
         public async Task FindAuthor(string author)
         {
             var connection = await GetConnection();
-            var query = "SELECT * FROM BOOKS WHERE AUTHOR LIKE @Author";
+            const string query = "SELECT * FROM BOOKS WHERE AUTHOR LIKE @Author";
             var books = await connection.QueryAsync<Book>(query, new { Author = "%" + author + "%" });
         }
 
         public async Task FindTitle(string keyword)
         {
             var connection = await GetConnection();
-            var query = "SELECT * FROM BOOKS WHERE LOWER(TITLE) LIKE LOWER(@Keyword)";
+            const string query = "SELECT * FROM BOOKS WHERE LOWER(TITLE) LIKE LOWER(@Keyword)";
             var books = await connection.QueryAsync<Book>(query, new { Keyword = "%" + keyword.ToLower() + "%" });
         }
 
         public async Task FindKeywordInAnnotation(string keyword)
         {
             var connection = await GetConnection();
-            var query = "SELECT * FROM BOOKS WHERE LOWER(ANNOTATION) LIKE LOWER(@Keyword)";
+            const string query = "SELECT * FROM BOOKS WHERE LOWER(ANNOTATION) LIKE LOWER(@Keyword)";
             var books = await connection.QueryAsync<Book>(query, new { Keyword = "%" + keyword.ToLower() + "%" });
         }
     }

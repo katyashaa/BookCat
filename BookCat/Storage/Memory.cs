@@ -1,15 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 namespace BookCat.Storage
 {
-    public class Memory : IMemory
+    public class Memory(IMemory _repo) : IMemory
     {
-        private readonly IMemory _repo;
-
-        public Memory(IMemory repo)
-        {
-            _repo = repo ?? throw new ArgumentNullException(nameof(repo));
-        }
-
         public static Memory RepoStorage;
         
         public static void Initialize(IConfiguration configuration)

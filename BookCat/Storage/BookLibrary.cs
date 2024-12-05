@@ -6,15 +6,13 @@ namespace BookCat.Storage
 {
     public class BookLibrary
     {
-        private readonly string _connectionString; // Строка подключения к базе данных
-
-        // Конструктор, который принимает строку подключения
+        private readonly string _connectionString; 
+        
         public BookLibrary(string connectionString)
         {
-            _connectionString = connectionString; // Сохраняем строку подключения
+            _connectionString = connectionString;
         }
-
-        // Метод для добавления книги в библиотеку
+        
         public bool AddBook(Book item)
         {
             if (!AddBookToDatabase(item))
@@ -29,7 +27,7 @@ namespace BookCat.Storage
             // Проверка на дублирование по названию книги
             if (IsBookInDatabase(item.GetTitle()))
             {
-                return false; // Книга с таким названием уже есть в базе данных
+                return false; 
             }
 
             using (var db = new NpgsqlConnection(_connectionString))
@@ -49,8 +47,7 @@ namespace BookCat.Storage
             }
             return true;
         }
-
-        // Метод для проверки наличия книги в базе данных по названию
+        
         private bool IsBookInDatabase(string title)
         {
             using (var db = new NpgsqlConnection(_connectionString))
@@ -59,8 +56,7 @@ namespace BookCat.Storage
                 return db.ExecuteScalar<int>(sql, new { Title = title }) > 0;
             }
         }
-
-        // Метод для получения всех книг из базы данных
+        
         public List<Book> GetBooksFromDatabase()
         {
             using (var db = new NpgsqlConnection(_connectionString))
@@ -73,9 +69,7 @@ namespace BookCat.Storage
         
         public ReadOnlyCollection<Book> GetLib()
         {
-            // Загружаем книги из базы данных
             List<Book> books = GetBooksFromDatabase();
-            // Преобразуем в ReadOnlyCollection
             return books.AsReadOnly();
         }
         
