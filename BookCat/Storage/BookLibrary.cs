@@ -7,7 +7,6 @@ namespace BookCat.Storage
 {
     public class BookLibrary
     {
-        private readonly List<Book> _books = new List<Book>();
         private readonly string _connectionString; // Строка подключения к базе данных
 
         // Конструктор, который принимает строку подключения
@@ -19,64 +18,67 @@ namespace BookCat.Storage
         // Метод для добавления книги в библиотеку
         public bool AddBook(Book item)
         {
-            if (!AddLocalBook(item))
+            if (!AddBookToDatabase(item))
             {
                 return false; // Книга не добавлена
             }
-
-            // Если нужно, сохраняем данные в базу данных
-            SaveBooks();
             return true;
         }
 
-        // Локальный метод для добавления книги в список
-        public bool AddLocalBook(Book item)
+        private bool AddBookToDatabase(Book item)
         {
             // Проверка на дублирование по названию книги
-            HashSet<string> name = new HashSet<string>();
-            Tokenizator.Tokenize(name, item.GetTitle());
-
-            foreach (var b in _books)
+            if (IsBookInDatabase(item.GetTitle()))
             {
-                if (b.FindTitle(name) == b.GetTitleLen()) // Книга с таким названием уже есть
-                {
-                    return false;
-                }
+                return false; // Книга с таким названием уже есть в базе данных
             }
 
-            _books.Add(item); // Добавляем книгу в список
-            return true;
-        }
-
-        // Возвращает список всех книг в библиотеке как ReadOnlyCollection
-        public ReadOnlyCollection<Book> GetLib()
-        {
-            return _books.AsReadOnly();
-        }
-
-        // Метод для сохранения данных в базу данных
-        private void SaveBooks()
-        {
-            // Реализуйте логику сохранения в базу данных
-            // Например, используя библиотеку Npgsql для PostgreSQL
             using (var db = new NpgsqlConnection(_connectionString))
             {
                 string sql = "INSERT INTO Books (Title, Year, Author, ISBN, Annotation, Genres) " +
                              "VALUES (@Title, @Year, @Author, @ISBN, @Annotation, @Genres)";
 
-                foreach (var book in _books)
+                db.Execute(sql, new
                 {
-                    db.Execute(sql, new
-                    {
-                        Title = book.GetTitle(),
-                        Year = book.GetYear(),
-                        Author = book.GetAuthor(),
-                        ISBN = book.GetIsbn(),
-                        Annotation = book.GetAnnotation(),
-                        Genres = string.Join(",", book.GetGenres())
-                    });
-                }
+                    Title = item.GetTitle(),
+                    Year = item.GetYear(),
+                    Author = item.GetAuthor(),
+                    ISBN = item.GetIsbn(),
+                    Annotation = item.GetAnnotation(),
+                    Genres = string.Join(",", item.GetGenres())
+                });
+            }
+            return true;
+        }
+
+        // Метод для проверки наличия книги в базе данных по названию
+        private bool IsBookInDatabase(string title)
+        {
+            using (var db = new NpgsqlConnection(_connectionString))
+            {
+                string sql = "SELECT COUNT(1) FROM Books WHERE Title = @Title";
+                return db.ExecuteScalar<int>(sql, new { Title = title }) > 0;
             }
         }
+
+        // Метод для получения всех книг из базы данных
+        public List<Book> GetBooksFromDatabase()
+        {
+            using (var db = new NpgsqlConnection(_connectionString))
+            {
+                string sql = "SELECT Title, Year, Author, ISBN, Annotation, Genres FROM Books";
+                var books = db.Query<Book>(sql).ToList();
+                return books;
+            }
+        }
+        
+        public ReadOnlyCollection<Book> GetLib()
+        {
+            // Загружаем книги из базы данных
+            List<Book> books = GetBooksFromDatabase();
+            // Преобразуем в ReadOnlyCollection
+            return books.AsReadOnly();
+        }
+        
     }
 }

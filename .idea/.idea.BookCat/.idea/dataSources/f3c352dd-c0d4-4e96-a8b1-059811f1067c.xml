@@ -3,15 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
       <ServerVersion>16.6</ServerVersion>
       <StartupTime>1733064388</StartupTime>
       <TimeZones>true ACDT
@@ -809,7 +801,7 @@ false Zulu
 14697||10|C|G
 14697||-9223372036854775808|U|G
 14697||10|U|G</Grants>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4242,53 +4234,51 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>749</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-01.14:50:21</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>761</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-05.15:16:54</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>524</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
     <table id="265" parent="264" name="books">
-      <ObjectId>16397</ObjectId>
-      <StateNumber>745</StateNumber>
+      <ObjectId>16402</ObjectId>
+      <StateNumber>760</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <column id="266" parent="265" name="title">
-      <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>760</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
     <column id="267" parent="265" name="author">
-      <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>760</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="268" parent="265" name="year">
+    <column id="268" parent="265" name="genres">
       <Position>3</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>760</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="269" parent="265" name="year">
+      <Position>4</Position>
+      <StateNumber>760</StateNumber>
       <StoredType>integer|0s</StoredType>
       <TypeId>23</TypeId>
     </column>
-    <column id="269" parent="265" name="isbn">
-      <Position>4</Position>
-      <StateNumber>742</StateNumber>
-      <StoredType>text|0s</StoredType>
-      <TypeId>25</TypeId>
-    </column>
-    <column id="270" parent="265" name="genres">
+    <column id="270" parent="265" name="annotation">
       <Position>5</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>760</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>
-    <column id="271" parent="265" name="annotation">
+    <column id="271" parent="265" name="isbn">
       <Position>6</Position>
-      <StateNumber>742</StateNumber>
+      <StateNumber>760</StateNumber>
       <StoredType>text|0s</StoredType>
       <TypeId>25</TypeId>
     </column>

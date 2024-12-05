@@ -10,7 +10,6 @@ namespace BookCat.Menu
         {
             return description;
         }
-
         protected void DoGreetings()
         {
             Console.WriteLine(msg);

@@ -11,11 +11,10 @@ namespace BookCat.Storage
         }
 
         public static Memory RepoStorage;
-
-        // Constructor that accepts IConfiguration and passes it to the Database
+        
         public static void Initialize(IConfiguration configuration)
         {
-            RepoStorage = new Memory(new Database(configuration)); // Pass IConfiguration to Database
+            RepoStorage = new Memory(new Database(configuration));
         }
 
         public async Task Book(string title, int year, string author, string isbn, string annotation, string genres)

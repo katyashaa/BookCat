@@ -13,6 +13,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.0" />
       <PackageReference Include="Microsoft.Extensions.Configuration.FileProviderExtensions" Version="1.0.0-rc1-final" />
       <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
       <PackageReference Include="Microsoft.Extensions.Primitives" Version="9.0.0" />
       <PackageReference Include="Npgsql" Version="9.0.1" />
       <PackageReference Include="Npgsql.ConfigureConnection" Version="0.1.1" />

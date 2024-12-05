@@ -66,7 +66,7 @@ namespace BookCat.Menu
             }
             else
             {
-                Console.WriteLine("Книга с данным именем уже существует в каталоге\n");  
+                Console.WriteLine("Книга с данным именем уже существует в каталоге!\n");  
             };
         }
     }
