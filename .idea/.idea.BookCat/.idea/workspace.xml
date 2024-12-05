@@ -7,18 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30bfb03c-17a3-4876-9529-820ae5994e5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/dataSources/f3c352dd-c0d4-4e96-a8b1-059811f1067c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/dataSources/f3c352dd-c0d4-4e96-a8b1-059811f1067c.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/dataSources/f3c352dd-c0d4-4e96-a8b1-059811f1067c/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/dataSources/f3c352dd-c0d4-4e96-a8b1-059811f1067c/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="30bfb03c-17a3-4876-9529-820ae5994e5b" name="Changes" comment="проверяется повторение книг">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BookCat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookCat/BookCat.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/BookCat.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookCat/Menu/AbstractSection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Menu/AbstractSection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookCat/Menu/AddBook.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Menu/AddBook.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BookCat/Storage/BookLibrary.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/BookLibrary.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BookCat/Storage/Memory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/Memory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BookCat/Storage/Database.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BookCat/Storage/Database.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +123,7 @@
       <workItem from="1733077171391" duration="169000" />
       <workItem from="1733258416805" duration="153000" />
       <workItem from="1733409795863" duration="7887000" />
+      <workItem from="1733418264748" duration="915000" />
     </task>
     <task id="LOCAL-00001" summary="почти готово">
       <option name="closed" value="true" />
@@ -171,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733071023658</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="проверяется повторение книг">
+      <option name="closed" value="true" />
+      <created>1733418483903</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733418483903</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +189,7 @@
     <MESSAGE value="dd" />
     <MESSAGE value="версия где пока что всё отправляется в бд" />
     <MESSAGE value="готовая версия" />
-    <option name="LAST_COMMIT_MESSAGE" value="готовая версия" />
+    <MESSAGE value="проверяется повторение книг" />
+    <option name="LAST_COMMIT_MESSAGE" value="проверяется повторение книг" />
   </component>
 </project>
